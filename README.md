@@ -7,7 +7,7 @@ Team Members Information:
 Matt Brownlee, Casino222, mmb905, mattbrownlee@icloud.com, HTML Front End and Python Backend
 Guled Liban, GuledKING, gal151, guledking2@gmail.com, CSS Front End and Python Backend
 Jerry Acheampong, 10-jerry, jjo110, jerryjay537@gmail.com, JavaScript Front End and Python Backend
-Andrei Roskelley, andreiroskelley, ar2888, ar2888@msstate.edu C++
+Andrei Roskelley, andreiroskelley, ar2888, ar2888@msstate.edu, Python Backend
 
 Languages and Techniques:
-Python for backend. HTML, CSS, JavaScript for frontend. Agile Development for technique.
+Python and SQLite with Django for backend. HTML, CSS, JavaScript for frontend. Agile Development for technique.
