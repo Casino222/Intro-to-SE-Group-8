@@ -1,1 +1,76 @@
-Jerry please complete page three of the SRS document. 
+Software Requirements Specification for E-commerce Website
+
+3. System Features
+
+3.1 User Authentication
+
+	Description and Priority: Allow users to log in with different roles.
+
+	Stimulus/Response Sequences:
+	Stimulus: User provides login credentials.
+	Response: System verifies credentials and grants appropriate access.
+
+	Functional Requirements:
+
+	REQ-1: Users can register new accounts by providing necessary details such as email, username, and password.
+	REQ-2: Users can log in using registered credentials.
+	REQ-3: Differentiate access levels based on user roles (Buyer, Seller, Admin).
+	REQ-4: Provide password recovery/reset functionality for forgotten passwords.
+
+3.2 Product Management
+
+	Description and Priority: Enable sellers to manage their listed products.
+
+	Stimulus/Response Sequences: 
+	Stimulus: Seller adds or updates product information.
+	Response: System updates product listings accordingly.
+
+	Functional Requirements:
+
+	REQ-5: Sellers can add new products by providing product details such as name, description, price, and images.
+	REQ-6: Sellers can edit/update existing product information.
+	REQ-7: Sellers can delete products from their inventory.
+
+3.3 Product Search and Comparison
+
+	Description and Priority: Allow buyers to search for products and compare them.
+
+	Stimulus/Response Sequences:
+	Stimulus: Buyer enters search queries or selects product categories.
+	Response: System displays relevant search results and enables product comparison.
+
+	Functional Requirements:
+
+	REQ-8: Buyers can search for products using keywords, categories, or filters.
+	REQ-9: Display search results with relevant product information such as name, price, and seller.
+	REQ-10: Enable buyers to compare multiple products side by side based on features, price, and other criteria.
+
+3.4 Purchase and Checkout
+
+Description and Priority: Facilitate the buying process for users.
+
+	Stimulus/Response Sequences:
+	Stimulus: Buyer selects products and proceeds to checkout.
+	Response: System handles payment processing and order confirmation.
+
+	Functional Requirements:
+
+	REQ-11: Buyers can add products to their shopping cart.
+	REQ-12: Calculate the total price including taxes and shipping fees.
+	REQ-13: Provide multiple payment options such as credit/debit cards, PayPal, etc.
+	REQ-14: Generate order confirmation and send email notifications to buyers and sellers.
+
+3.5 Order Management
+
+	Description and Priority: Enable buyers and sellers to manage orders.
+
+	Stimulus/Response Sequences:
+	Stimulus: Buyer or seller interacts with order management features.
+	Response: System updates order status and notifies relevant parties.
+
+	Functional Requirements:
+
+	REQ-15: Buyers can view order history and track the status of their orders.
+	REQ-16: Sellers receive notifications of new orders and can update order status (e.g., shipped, delivered).
+	REQ-17: Admins can access and manage all orders, intervene if necessary (e.g., dispute resolution).
+
