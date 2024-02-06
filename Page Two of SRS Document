@@ -1,1 +1,27 @@
-Andrei please complete page two of the SRS document. 
+2. Overall Description
+
+2.1 Product Perspective
+Our product is not a new product it is a stand alone website that will allow shoppers to browse our catalog and purchase and sell items
+
+2.2 Product Functions
+-Functions include keeping track of passwords and usernames to make sure no invalid purchases are made
+-Safely store credit card information to process purchases
+-Be able to track and store any products being sold
+
+2.3 User Classes and Characteristics
+There are multiple user classes that will be using our product. The most important will have the customer
+Class which will contain variables such as address or email and will also contain functions that will make it 
+Possible to search for content and purchase content. There is also the seller class which will have 
+Variables that keep track of their items and have functions to be able to upload their product. There are also
+Less important user classes such as admin which will have characteristics such as storing the admin name 
+And email
+
+2.4 Operating Environment
+The backend of our product will operate on python, and SQlite with django. The front end will operate with
+HTML, CSS and JavaScript. Agile Development will be used for technique
+
+2.5 Design and Implementation Constraints
+
+There is a big time constraint having to meet certain deadlines. Also the use of specific 
+Programming languages for certain tasks will keep us limited in what we can do. There are also
+Many hardware constraints that limit how well our product will run or what it can perform
