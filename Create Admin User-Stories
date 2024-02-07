@@ -1,1 +1,17 @@
-Andrei please create the Admin User-Stories.
+Admin User-Stories
+
+User Story ID: #AUS01
+Title: User Authentication 
+Details: As an admin, I would like to be able to safely log in and log out without worrying about my data not being protected 
+
+User Story ID: #AUS02
+Title: Customer feedback
+Details: As an admin, I would like to be able to easily access and respond to customers concerns and questions
+
+User Story ID: #AUS03
+Title: Product addition and review
+Details: As an admin, I would like to be able to easily add products and review them to ensure they are fit for sale
+
+User Story ID: #AUS04
+Title: Product inventory
+Details: As an admin, I would like to be able to easily supervise and keep track of inventory
