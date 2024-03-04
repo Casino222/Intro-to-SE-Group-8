@@ -1,0 +1,15 @@
+Guled please complete the Resource & Environment Needs and Terms/Acronyms sections of the Test Plan Document.
+
+4.1 Testing Tools
++Testing Django through built-in frameworks
++Object oriented testing
++WebApp testing
+
+4.2 Test Environment
++ The application is intended to run on at Windows 10 or above (Microsoft OS)
++ Intended to run on Chrome-based browsers
++ Inteded to run on Desktop, but will also test for mobile devices
+
+5 Terms/Acronyms
+QA == Quality Assurance
+UAT == User Acceptance Test 
