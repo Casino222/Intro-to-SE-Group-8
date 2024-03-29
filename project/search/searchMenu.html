@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create a column layout with Flexbox */
+.row {
+  display: flex;
+}
+
+/* Left column (menu) */
+.left {
+  flex: 35%;
+  padding: 15px 0;
+}
+
+.left h2 {
+  padding-left: 8px;
+}
+
+/* Right column (page content) */
+.right {
+  flex: 65%;
+  padding: 15px;
+}
+
+/* Style the search box */
+#mySearch {
+  width: 100%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+}
+
+/* Style the navigation menu inside the left column */
+#myMenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myMenu li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block
+}
+
+#myMenu li a:hover {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<h2>Search Menu</h2>
+<p>
+  Start to type for a specific category inside the search bar to "filter" the search options.</p>
+
+<div class="row">
+  <div class="left" style="background-color:#bbb;">
+    <h2>Games</h2>
+    <input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category">
+    <ul id="myMenu">
+      <li><a href="#" onClick="listBuild()">Grand Theft Auto V</a></li>
+      <li><a href="#">Red Dead Redemption 2</a></li>
+    </ul>
+	<button onclick="changeContent()">Change Content</button>
+	
+	<!-- DER Button -->
+    <button onclick="test()">Test Fetch from Server</button>
+  </div>
+  
+  <div class="right" id="main" style="background-color:#ddd;">
+    <h2>Page Content</h2>
+    <p>Start to type for a specific category inside the search bar to "filter" the search options.</p>
+    <p>Some text..Some text..Some text..Some text..Some text..Some text..Some text..Some text..</p>
+    <p>Some other text..Some text..Some text..Some text..Some text..Some text..Some text..Some text..</p>
+    <p>Some text..</p>
+  </div>
+</div>
+
+<script>
+function test(){
+  fetch('http://localhost/fetch_data.php')
+  .then(response => response.json())
+  .then(data => {
+      console.log(data); // Data fetched from the database
+  })
+  .catch(error => console.error('Error fetching data:', error));
+
+}
+  
+
+
+//courtesy of the GOAT chatgpt
+function generateList(items) {
+    // Create a new unordered list element
+    var ul = document.createElement('ul');
+
+    // Loop through the items and create list item (li) elements
+    items.forEach(function(item) {
+        var li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li); // Append each list item to the unordered list
+    });
+
+    // Add the unordered list to the container in the HTML document
+    document.getElementById('listContainer').appendChild(ul);
+}
+
+function listBuild() {
+	-->chatGPT did this
+    //alert("erm listBuild()");
+	fetch('http://localhost/fetch_data.php')
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                // Get the list element by its id
+                var itemList = document.getElementById('myMenu');
+				document.getElementById('main').innerHTML = 
+				`
+                    Name: ${data.name}<br>
+                    Price: ${data.price} USD<br>
+                    Description: ${data.text}
+                `;
+                //Loop through the JSON data and create list items
+                data.forEach(item => {
+                    var li = document.createElement('li'); // Create a new list item element
+					var a = document.createElement('a');
+                    a.textContent = item.name; // Set the text content of the list item
+					a.classList.add('myMenu');
+					a.setAttribute('id',item.id);
+					a.setAttribute('href',"changeContent("+item.id+")")
+					li.appendChild(a);
+					itemList.appendChild(li); // Append the list item to the list
+                });
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+	
+}
+
+function myFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function testFetch(){
+fetch('http://localhost/fetch_data.php')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data); // Data fetched from the SQL table
+  })
+  .catch(error => console.error('Error fetching data:', error));
+  }
+  
+function getGameName(id){
+	fetch('http://localhost/fetch_data.php')
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                // Get the list element
+                    return data.name;
+                });
+            
+            //.catch(error => console.error('getGameDesc()- Error fetching JSON:', error));
+}
+
+function changeContent(d=0) {
+            // Get the div element by its id
+			console.log("test");
+            var contentDiv = document.getElementById("main");
+
+            // Change the contents of the div
+            contentDiv.innerHTML = "<h2>Game</h2><p>"+getGameName(d)+"</p>";
+        }
+		
+	window.onload = function(){
+		listBuild();
+	}
+		
+</script>
+
+</body>
+</html>
