@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart & Checkout</title>
+  </head>
+  <body>
+    <h1>Shopping Cart</h1>
+    <ul>
+      {% for cart_item in cart_items %}
+      <li>
+        {{ cart_item.product.name }} - {{ cart_item.quantity }} - ${{
+        cart_item.product.price }}
+      </li>
+      {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <form action="{% url 'checkout' %}" method="post">
+      {% csrf_token %}
+      <label for="payment_method">Payment Method:</label>
+      <select name="payment_method" id="payment_method">
+        <option value="credit_card">Credit/Debit Card</option>
+        <option value="paypal">PayPal</option>
+      </select>
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>

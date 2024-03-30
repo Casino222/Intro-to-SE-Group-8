@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Feedback</title>
+  </head>
+  <body>
+    <h1>Customer Feedback for {{ product.name }}</h1>
+    <ul>
+      {% for comment in feedback %}
+      <li>{{ comment }}</li>
+      {% empty %}
+      <li>No feedback available</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
