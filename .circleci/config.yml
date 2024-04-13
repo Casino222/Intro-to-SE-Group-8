@@ -9,8 +9,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: List files in the project directory
-          command: ls -la
+          name: Check Directory Contents
+          command: ls -alh  # List all files in the current directory
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Pipfile.lock" }}
@@ -19,17 +19,11 @@ jobs:
           name: Install dependencies
           command: pipenv install --dev
       - run:
-          name: List installed packages
-          command: pipenv run pip list
-      - run:
           name: Show virtualenv path
-          command: |
-            echo "Virtualenv path: $(pipenv --venv)"
+          command: echo "Virtualenv path: $(pipenv --venv)"
       - run:
-          name: Run tests using full path
-          command: |
-            VENV_PATH=$(pipenv --venv)
-            $VENV_PATH/bin/python manage.py test
+          name: Run tests
+          command: pipenv run python manage.py test
       - save_cache:
           paths:
             - ".venv"
