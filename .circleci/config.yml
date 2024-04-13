@@ -8,6 +8,9 @@ jobs:
       - image: cimg/python:3.12-node
     steps:
       - checkout
+      - run:
+          name: List files in the project directory
+          command: ls -la
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Pipfile.lock" }}
@@ -20,8 +23,7 @@ jobs:
           command: pipenv run pip list
       - run:
           name: Show virtualenv path
-          command: |
-            echo "Virtualenv path: $(pipenv --venv)"
+          command: echo "Virtualenv path: $(pipenv --venv)"
       - run:
           name: Run tests using full path
           command: |
