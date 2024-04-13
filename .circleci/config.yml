@@ -12,18 +12,20 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "Pipfile.lock" }}
             - v1-dependencies-
-      - python/install-packages:
-          args: --dev
-          pkg-manager: pipenv
+      - run:
+          name: Install dependencies
+          command: pipenv install --dev
       - run:
           name: List installed packages
           command: pipenv run pip list
       - run:
-          name: Run tests
+          name: Show virtualenv path
+          command: echo "Virtualenv path: $(pipenv --venv)"
+      - run:
+          name: Run tests using full path
           command: |
-            echo "Activating virtual environment"
-            source $(pipenv --venv)/bin/activate
-            python manage.py test
+            VENV_PATH=$(pipenv --venv)
+            $VENV_PATH/bin/python manage.py test
       - save_cache:
           paths:
             - ".venv"
