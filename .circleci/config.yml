@@ -23,7 +23,8 @@ jobs:
           command: pipenv run pip list
       - run:
           name: Show virtualenv path
-          command: echo "Virtualenv path: $(pipenv --venv)"
+          command: |
+            echo "Virtualenv path: $(pipenv --venv)"
       - run:
           name: Run tests using full path
           command: |
