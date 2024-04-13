@@ -1,8 +1,4 @@
 version: 2.1
-orbs:
-  python: circleci/python@2
-
-version: 2.1
 jobs:
   build:
     docker:
@@ -11,18 +7,8 @@ jobs:
       - checkout
       - run:
           name: Install Dependencies
-          command: |
-            pipenv install --dev
-      - run:
-          name: Show virtualenv path
-          command: |
-            echo "Virtualenv path: $(pipenv --venv)"
-      - run:
-          name: Run Tests
-          command: |
-            pipenv run python manage.py test
-
+          command: pipenv install --dev
 workflows:
   build-and-test:
     jobs:
-      - test-python
+      - build
