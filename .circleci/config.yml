@@ -2,32 +2,25 @@ version: 2.1
 orbs:
   python: circleci/python@2
 
+version: 2.1
 jobs:
-  test-python:
+  build:
     docker:
       - image: cimg/python:3.12-node
     steps:
       - checkout
       - run:
-          name: Check Directory Contents
-          command: ls -alh  # List all files in the current directory
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Pipfile.lock" }}
-            - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: pipenv install --dev
+          name: Install Dependencies
+          command: |
+            pipenv install --dev
       - run:
           name: Show virtualenv path
-          command: echo "Virtualenv path: $(pipenv --venv)"
+          command: |
+            echo "Virtualenv path: $(pipenv --venv)"
       - run:
-          name: Run tests
-          command: pipenv run python manage.py test
-      - save_cache:
-          paths:
-            - ".venv"
-          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
+          name: Run Tests
+          command: |
+            pipenv run python manage.py test
 
 workflows:
   build-and-test:
