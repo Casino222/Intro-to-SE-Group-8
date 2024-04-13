@@ -20,7 +20,8 @@ jobs:
           command: pipenv run pip list
       - run:
           name: Show virtualenv path
-          command: echo "Virtualenv path: $(pipenv --venv)"
+          command: |
+            echo "Virtualenv path: $(pipenv --venv)"
       - run:
           name: Run tests using full path
           command: |
@@ -31,21 +32,7 @@ jobs:
             - ".venv"
           key: v1-dependencies-{{ checksum "Pipfile.lock" }}
 
-  deploy:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
-      - run:
-          name: found github actions config
-          command: ':'
-
 workflows:
   build-and-test:
     jobs:
       - test-python
-    # - deploy:
-    #     requires:
-    #       - test-python
