@@ -1,0 +1,14 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/python:3.12-node
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: pipenv install --dev
+workflows:
+  build-and-test:
+    jobs:
+      - build
