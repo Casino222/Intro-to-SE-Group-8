@@ -15,13 +15,19 @@ jobs:
       - python/install-packages:
           args: --dev
           pkg-manager: pipenv
-      - save_cache:
-          paths:
-            - ".venv"  # Path where Pipenv installs packages
-          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: List installed packages
+          command: pipenv run pip list
       - run:
           name: Run tests
-          command: pipenv run python manage.py test
+          command: |
+            echo "Activating virtual environment"
+            source $(pipenv --venv)/bin/activate
+            python manage.py test
+      - save_cache:
+          paths:
+            - ".venv"
+          key: v1-dependencies-{{ checksum "Pipfile.lock" }}
 
   deploy:
     docker:
