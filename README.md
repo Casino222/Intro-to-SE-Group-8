@@ -19,3 +19,11 @@ Andrei Roskelley, andreiroskelley, ar2888, ar2888@msstate.edu, Python Backend
 
 Languages and Techniques:         
 Python and SQLite with Django for backend. HTML, CSS, JavaScript for frontend. Agile Development for technique.
+
+Description of how to run and operate
+Open terminal and type python manage.py runserver and click link and you will be able to register and make an account as a buyer seller or admin and be able
+to navigate the website from there
+As a buyer you can search, compare, purchase, and return products
+As a seller you will be able to add, manage products and receive payment
+As an admin you will be able to manage user accounts, product listing and oversee user actions
+
