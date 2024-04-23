@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% block title %}Remove Product{% endblock title %}
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Remove Product</h1>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}  <!-- Render form fields here -->
+                <button type="submit">Remove Product</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

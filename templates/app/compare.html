@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Compare Products{% endblock title %}
+
+{% block main-content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Compare your products!</h1>
+            <div class="compare-products">
+                <form method="POST" action="{% url 'compare-products' %}">
+                    {% csrf_token %}
+                    <label for="product1">Product 1:</label>
+                    <select name="product1" id="product1">
+                        {% for product in products %}
+                            <option value="{{ product.id }}">{{ product.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="product2">Product 2:</label>
+                    <select name="product2" id="product2">
+                        {% for product in products %}
+                            <option value="{{ product.id }}">{{ product.title }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Compare</button>
+                </form>
+            </div>
+            <div class="comparison-results">
+                {% if product1 %}
+                <h2>{{ product1.title }}</h2>
+                <p><strong>Selling Price:</strong> ${{ product1.selling_price }}</p>
+                <p><strong>Discounted Price:</strong> ${{ product1.discounted_price }}</p>
+                <p><strong>Description:</strong> {{ product1.description }}</p>
+                <!-- Add more details as needed -->
+                {% endif %}
+
+                {% if product2 %}
+                <h2>{{ product2.title }}</h2>
+                <p><strong>Selling Price:</strong> ${{ product2.selling_price }}</p>
+                <p><strong>Discounted Price:</strong> ${{ product2.discounted_price }}</p>
+                <p><strong>Description:</strong> {{ product2.description }}</p>
+                <!-- Add more details as needed -->
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

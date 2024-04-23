@@ -1,0 +1,31 @@
+<!-- seller_orders.html -->
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Seller Orders{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <h3>Orders Placed by Others</h3>
+        <div class="col-sm-12">
+            {% for order in seller_orders %}
+            <div class="row mb-3">
+                <div class="col-sm-2">
+                    <img src="{{ order.product.product_image.url }}" class="img-fluid" height="100" width="100"/>
+                </div>
+                <div class="col-sm-7">
+                    <p>Product: {{ order.product.title }}</p>
+                    <p>Quantity: {{ order.quantity }}</p> 
+                    <p>Price: {{ order.total_cost }}</p>
+                </div>
+                <div class="col-sm-3">
+                    <p>Order Status: {{ order.status }}</p>
+                    <!-- Add progress bar or status indicators as needed -->
+                </div>
+            </div>
+            {% empty %}
+            <p>No orders found.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
